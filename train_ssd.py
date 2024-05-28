@@ -92,7 +92,7 @@ parser.add_argument('--t-max', default=100, type=float,
 # Train params
 parser.add_argument('--batch-size', default=4, type=int,
                     help='Batch size for training')
-parser.add_argument('--num-epochs', '--epochs', default=30, type=int,
+parser.add_argument('--num-epochs', '--epochs', default=40000, type=int,
                     help='the number epochs')
 parser.add_argument('--num-workers', '--workers', default=2, type=int,
                     help='Number of workers used in dataloading')
@@ -429,7 +429,10 @@ if __name__ == '__main__':
                 for i in range(len(class_ap)):
                     tensorboard.add_scalar(f"Class Average Precision/{eval_dataset.class_names[i+1]}", class_ap[i], epoch)
     
-            model_path = os.path.join(args.checkpoint_folder, f"{args.net}-Epoch-{epoch}-Loss-{val_loss}.pth")
+            '''
+            # model_path = os.path.join(args.checkpoint_folder, f"{args.net}-Epoch-{epoch}-Loss-{val_loss}.pth")
+            '''
+            model_path = os.path.join(args.checkpoint_folder, f"ssd-mobilenet-jengo")
             net.save(model_path)
             logging.info(f"Saved model {model_path}")
 
